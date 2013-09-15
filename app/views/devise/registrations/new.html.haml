@@ -1,0 +1,15 @@
+.container.form.login
+	%h2 Inscription
+
+	= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+		= f.error_notification
+
+		= f.input :nom, required: true, autofocus: true
+		= f.input :prenom, required: true
+		= f.input :email, required: true
+		= f.input :password, required: true
+		= f.input :password_confirmation, required: true
+
+		= f.button :submit, "S'inscrire", class: 'btn btn-warning'
+
+	= render "devise/shared/links"

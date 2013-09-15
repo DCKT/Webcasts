@@ -1,0 +1,44 @@
+@mixin font($size, $font, $color) {
+	font-size: $size;
+	font-family: $font;
+	@if $color != null {
+		color: $color;
+	}
+}
+
+@mixin setup-position($type, $top, $right, $bottom, $left) {
+	position: $type;
+
+	@if $top != null  {
+		top: $top;
+	}
+	@if $right != null {
+		right: $right;
+	}
+	
+	@if $bottom != null {
+		bottom: $bottom;
+	}
+	@if $left != null {
+		left: $left;
+	}
+}
+
+@mixin size($width, $height) {
+	width: $width;
+	height: $height;
+}
+
+@mixin transition($object, $time, $animation) {
+	-webkit-transition: $object $time $animation;
+	-moz-transition: $object $time $animation;
+	-ms-transition: $object $time $animation;
+	transition: $object $time $animation;
+}
+
+@mixin border-radius($size) {
+	-webkit-border-radius: $size;
+	-moz-border-radius: $size;
+	-ms-border-radius: $size;
+	border-radius: $size;
+}

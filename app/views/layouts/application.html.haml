@@ -1,0 +1,26 @@
+!!!
+%html
+%head
+	%title WebCasts
+	= stylesheet_link_tag    "application", media: "all"
+	= javascript_include_tag "application"
+	= csrf_meta_tags
+
+%body
+
+%nav
+	= link_to "WebCasts", root_path, class: "brand"
+
+	.pull-right
+		- if user_signed_in?
+			%a.connected{href: '#'}
+				%img{src: "http://placehold.it/80x80"}
+				= current_user.email
+		- else
+			= link_to new_user_session_path , class: "login btn btn-warning" do
+				.user-icon
+					= image_tag('user.png')
+				Login
+
+= yield
+

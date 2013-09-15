@@ -1,0 +1,6 @@
+.container.form
+	= simple_form_for @screencast do |s|
+		= s.input :titre
+		= s.file_field :video
+	 
+		= s.submit "Ajouter la vidéo"

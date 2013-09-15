@@ -1,0 +1,26 @@
+@import "colors";
+@import "mixins";
+
+.container.index {
+	width: 75%;
+	float: right;
+	margin-top: 10px;
+
+	.word {
+		display: inline-block;
+		width: 33%;
+		margin: auto;
+		text-align: center;
+
+		h2 {
+			color: $black;
+			font-family: "Lato";
+			text-transform: uppercase;
+		}
+
+		img {
+			@include border-radius(20px);
+			width: 250px;
+		}
+	}
+}

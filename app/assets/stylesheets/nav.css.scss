@@ -1,0 +1,54 @@
+@import "colors";
+@import "mixins";
+
+nav {
+	margin: 0;
+	padding: 0;
+	background-color: $black;
+	height: 80px;
+
+	.brand {
+		color: white;
+		line-height: 75px;
+		font-size: 50px;
+		padding-left: 10px;
+		text-decoration: none;
+		font-family: "ONRAMP";
+	}
+
+	.pull-right {
+		.user-icon {
+			position: absolute;
+			top: 4px;
+			left: 5px;
+		}
+		.login {
+			position: relative;
+			text-align: right;
+			font-size: 20px;
+			padding: 10px;
+			display: inline-block;
+			width: 90px;
+			line-height: 20px;
+		}
+		
+		.connected {
+			img {
+				float: left;
+				width: 50px;
+				margin-right: 10px;
+				@include border-radius(120px);
+			}
+			color: white;
+			font-family: "Lato";
+			font-size: 19px;
+			line-height: 48px;
+
+			&:hover {
+				color: $orange;
+			}
+		}
+	}
+}
+
+

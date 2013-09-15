@@ -1,0 +1,21 @@
+@import "colors";
+
+aside {
+	width: 25%;
+	background-color: $gray;
+	margin: 0;
+	height: 100%;
+	position: fixed;
+	overflow: auto;
+
+	.box {
+		border-bottom: 2px solid $gray;
+		height: 280px;
+
+		img {
+			width: 100%;
+			height: 100%;
+			opacity: 0.8;
+		}
+	}
+}
