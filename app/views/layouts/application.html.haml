@@ -13,9 +13,23 @@
 
 	.pull-right
 		- if user_signed_in?
+			- if current_user.admin
+				= link_to "Nouveau screencast", new_screencast_path, class:'btn btn-warning'
 			%a.connected{href: '#'}
-				%img{src: "http://placehold.it/80x80"}
-				= current_user.email
+				- if @gravatar_image
+					= image_tag(@gravatar_image)
+				- else
+					%img{src: "http://placehold.it/80x80"}
+				%span
+					= current_user.prenom.capitalize
+					= current_user.nom.capitalize
+
+			.panel.hide
+				%ul
+					%li
+						%a{href: "#"} Mes favoris
+					%li
+						= link_to "Déconnexion", destroy_user_session_path, method: :delete
 		- else
 			= link_to new_user_session_path , class: "login btn btn-warning" do
 				.user-icon

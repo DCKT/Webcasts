@@ -19,12 +19,10 @@ body {
 	margin: 0;
 }
 
-.pull-right {
-	float: right;
-	margin-top: 18px;
-	margin-right: 10px;
-}
-
 ::selection {
     background-color: #F16645;
+}
+
+.hide {
+	display: none;
 }

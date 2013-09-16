@@ -6,7 +6,8 @@ nav {
 	padding: 0;
 	background-color: $black;
 	height: 80px;
-
+	position: relative;
+	
 	.brand {
 		color: white;
 		line-height: 75px;
@@ -14,9 +15,16 @@ nav {
 		padding-left: 10px;
 		text-decoration: none;
 		font-family: "ONRAMP";
+		
+		&:hover {
+			color: $orange;
+		}	
 	}
 
 	.pull-right {
+		position: absolute;
+		right: 0;
+		top: 0px;
 		.user-icon {
 			position: absolute;
 			top: 4px;
@@ -24,6 +32,8 @@ nav {
 		}
 		.login {
 			position: relative;
+			top: 20px;
+			right: 20px;
 			text-align: right;
 			font-size: 20px;
 			padding: 10px;
@@ -31,10 +41,55 @@ nav {
 			width: 90px;
 			line-height: 20px;
 		}
-		
+
+		.panel {
+			position: absolute;
+			top: 80px;
+			right: -10px;
+			width: 205px;
+			background-color: $gray;
+			height: 200px;
+			@include border-radius(0 0 0 5px);
+
+			ul {
+				padding:0;
+				li {
+					display: block;
+					text-align: center;
+					height: 30px;
+
+					&:not(:first-child) {
+						border-top: 2px solid gray;
+					}
+					&:not(:last-child) {
+						border-bottom: 2px solid gray;
+					}
+					&:hover {
+						background-color: rgba(#FFF, 0.3);
+					}
+					a {
+						text-decoration: none;
+						display: block;
+						font-size: 20px;
+						color: white;
+						font-family: "Lato";
+					}
+				}
+			}
+		}
+
 		.connected {
+			position: relative;
+			width: auto;
+			top: 15px;
+			right: 15px;
+
+			span {
+				width: auto;	
+			}
 			img {
-				float: left;
+				position: absolute;
+				left: -60px;
 				width: 50px;
 				margin-right: 10px;
 				@include border-radius(120px);

@@ -1,5 +1,5 @@
 WebCasts::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
   resources :screencasts
   root to: "screencasts#index"
   # The priority is based upon order of creation: first created -> highest priority.

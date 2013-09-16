@@ -8,8 +8,8 @@
 
 	.word {
 		display: inline-block;
-		width: 33%;
-		margin: auto;
+		width: 30%;
+		margin: 15px;
 		text-align: center;
 
 		h2 {
@@ -20,7 +20,12 @@
 
 		img {
 			@include border-radius(20px);
-			width: 250px;
+			width: 210px;
+		}
+
+		p {
+			text-align: justify;
+			font-family: "Lato";
 		}
 	}
 }
