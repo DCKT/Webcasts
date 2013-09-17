@@ -1,11 +1,24 @@
 @import "colors";
 @import "mixins";
 
+
+
 .container.index {
 	width: 75%;
 	float: right;
-	margin-top: 10px;
+	margin-top: 100px;
 
+	.register {
+		display: block;
+		margin: 35px auto;
+		width: 75%;
+		font-size: 30px;
+		text-align: center;
+		border-left: 3px solid #27ae60;
+		border-right: 3px solid #27ae60;
+		border-bottom: 2px solid #27ae60;
+		box-shadow: 0px 2px 1px #27ae60;
+	}
 	.word {
 		display: inline-block;
 		width: 30%;
@@ -21,6 +34,9 @@
 		img {
 			@include border-radius(20px);
 			width: 210px;
+			height: 210px;
+			display: block;
+			margin: auto;
 		}
 
 		p {
@@ -29,3 +45,4 @@
 		}
 	}
 }
+

@@ -1,20 +1,51 @@
 @import "colors";
+@import "mixins";
 
 aside {
 	width: 25%;
+
+	&.show {
+		width: 20% !important;
+	}
+
 	background-color: $gray;
 	margin: 0;
-	height: 100%;
+	height: 90%;
 	position: fixed;
-	overflow: auto;
+	top: 80px;
+	overflow: hidden;
 
 	.box {
 		border-bottom: 2px solid $gray;
 		height: 280px;
+		position: relative;
+		-webkit-transition: all 1s linear;
+		// @include transition(all, 2s, linear);
+
+		&:hover {
+			@include transition(all, 2s, linear);
+			.titre {
+				opacity: 1;
+				background-color: rgba($gray, 0.7);
+			}
+		}
 
 		img {
 			width: 100%;
 			height: 100%;
+			opacity: 0.8;
+		}
+		.titre {
+			position: absolute;
+			bottom: 0px;
+			width: 100%;
+			height: 40px;
+			background-color: rgba($gray, 0.3);
+			text-align: center;
+			color: white;
+			font-family: "Lato";
+			font-weight: bold;
+			line-height: 35px;
 			opacity: 0.8;
 		}
 	}

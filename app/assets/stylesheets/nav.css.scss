@@ -6,9 +6,13 @@ nav {
 	padding: 0;
 	background-color: $black;
 	height: 80px;
-	position: relative;
-	
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0; 
+
 	.brand {
+		float: left;
 		color: white;
 		line-height: 75px;
 		font-size: 50px;
@@ -19,6 +23,34 @@ nav {
 		&:hover {
 			color: $orange;
 		}	
+	}
+
+	.search {
+		float: right;
+		width: 200px;
+		position: relative;
+		top: 27px;
+		left: -175px;
+		input {
+			margin-top: -5px;
+			@include border-radius(33px);
+			padding: 3px;
+			background-color: $gray;
+			border: none;
+			height: 30px;
+			font-family: "Lato";
+			color: white;
+			font-size: 15px;
+			width: 150px;
+			padding-left: 40px;
+		}
+
+		img {
+			width: 18px;
+			position: absolute;
+			left: 9px;
+			top: 5px;
+		}
 	}
 
 	.pull-right {
@@ -50,6 +82,8 @@ nav {
 			background-color: $gray;
 			height: 200px;
 			@include border-radius(0 0 0 5px);
+			border-left: 5px solid $black;
+			border-bottom: 5px solid $black;
 
 			ul {
 				padding:0;
@@ -76,6 +110,17 @@ nav {
 					}
 				}
 			}
+		}
+		
+		.admin {
+			position: absolute;
+			left: -300px;
+			top: 21px;
+		}
+		.admin-categ {
+			position: absolute;
+			left: -500px;
+			top: 21px;
 		}
 
 		.connected {

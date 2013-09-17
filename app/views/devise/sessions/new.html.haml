@@ -7,6 +7,8 @@
 		= f.input :password, required: true
 		%div.center
 			= f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
-		= f.button :submit, "Se connecter", class: 'btn btn-warning'
+		%div
+			= link_to "Mot de passe oublié ?", new_password_path(resource_name)
+		= f.button :submit, "Se connecter", class: 'btn btn-success'
 
-	= render "devise/shared/links"
+		= link_to "S'inscrire", new_registration_path(resource_name)

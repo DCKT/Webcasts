@@ -1,3 +1,24 @@
-.container
-	= @screencast.titre
-	= video_tag(@screencast.video.url, controls: true)
+// %aside.show
+// 	.content
+// 		- @screencasts.each do |screencast|
+// 			.box
+// 				= link_to screencast_path(screencast) do 
+// 					= image_tag(screencast.image_principale.url)
+// 					.titre= screencast.titre 
+.container.show
+	.content
+		%h1= @screencast.titre
+		%div
+			= video_tag(@screencast.video.url, controls: true)
+
+		.actions
+			- if @screencast.favoris
+				%a.fav.active{href: '#'} 
+					= image_tag("star.png", data: {id: @screencast.id})
+			- else 
+				%a.fav{href: '#'}
+					= image_tag("star.png", data: {id: @screencast.id})
+			%a{href: '#'}
+				= image_tag("fb.png")
+			%a{href: '#'}
+				= image_tag("twitter.png")

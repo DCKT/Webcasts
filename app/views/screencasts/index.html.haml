@@ -1,35 +1,32 @@
 %aside.nano
 	.content
-		.box
-			%img{src: "http://placehold.it/500x350"}
+		- @screencasts.each do |screencast|
+			.box
+				= link_to screencast_path(screencast) do 
+					= image_tag(screencast.image_principale.url)
+					.titre= screencast.titre 
 
-		.box
-			%img{src: "http://placehold.it/500x350"}
-
-		.box
-			%img{src: "http://placehold.it/500x350"}
-
-		.box
-			%img{src: "http://placehold.it/500x350"}
-
-.container.index<
+.container.index
 	.word
 		= image_tag('tv.png')
 		%h2 Regardez
 		%p 
-			Parcourez la bibliothèque et trouvez le screencast de votre choix parmis 
-			les nombreuses catégories.
+			Parcourez la bibliothèque et regardez les screencasts de votre choix en illimités parmis 
+			les nombreuses catégories (HTML, CSS, JavaScript, PHP, Ruby, etc).
 	.word
 		= image_tag('book.png')
 		%h2 Apprenez
 		%p
 			L'auto-apprentissage est un élément essentiel pour un bon développeur, 
-			c'est pourquoi chaque screencast met en avant les choses essentiels 
-			permettant la compréhension du public.
+			chaques screencasts misent sur l'essentiels permettant la compréhension 
+			du public.
 	.word
 		= image_tag('tools.png')
 		%h2 Créez
 		%p 
 			Une fois le screencast terminé, vous avez tous les outils en main pour
-			réaliser de grandes choses. Chaque screencast est accompagné d'anecdotes et
-			de conseils vous permettant ainsi de démarrer sur de bonnes bases.
+			réaliser de grandes choses. Anecdotes et conseils vous permettant 
+			de démarrer sur de bonnes bases.
+
+	%a.btn.btn-success.register{href:'#'}
+		Commencer dès maintenant

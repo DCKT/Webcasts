@@ -1,22 +1,27 @@
 !!!
 %html
-%head
-	%title WebCasts
-	= stylesheet_link_tag    "application", media: "all"
-	= javascript_include_tag "application"
-	= csrf_meta_tags
+	%head
+		%title WebCasts
+		= favicon_link_tag "webcasts.png"
+		= stylesheet_link_tag    "application", media: "all"
+		= javascript_include_tag "application"
+		= csrf_meta_tags
 
 %body
 
 %nav
-	= link_to "WebCasts", root_path, class: "brand"
-
+	.pull-left
+		= link_to "WebCasts", root_path, class: "brand"
+		.search
+			%input
+			= image_tag('search.png')
 	.pull-right
 		- if user_signed_in?
 			- if current_user.admin
-				= link_to "Nouveau screencast", new_screencast_path, class:'btn btn-warning'
+				= link_to "Nouveau screencast", new_screencast_path, class:'btn btn-warning admin'
+				= link_to "Nouvelle catégorie", new_category_path, class:'btn btn-warning admin-categ'
 			%a.connected{href: '#'}
-				- if @gravatar_image
+				- if get_gravatar_url()
 					= image_tag(@gravatar_image)
 				- else
 					%img{src: "http://placehold.it/80x80"}
@@ -27,7 +32,7 @@
 			.panel.hide
 				%ul
 					%li
-						%a{href: "#"} Mes favoris
+						= link_to "Mes favoris", mes_favoris_path
 					%li
 						= link_to "Déconnexion", destroy_user_session_path, method: :delete
 		- else

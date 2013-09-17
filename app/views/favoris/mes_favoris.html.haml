@@ -1,0 +1,10 @@
+%h1.title 
+	Mes favoris
+
+- unless @screencasts.empty?
+	- @screencasts.each do |screencast|
+		.box
+			= screencast.titre
+
+- else 
+	Vous n'avez pas de favoris.

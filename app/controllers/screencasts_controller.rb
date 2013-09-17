@@ -1,10 +1,8 @@
 class ScreencastsController < ApplicationController
+	before_filter :user_connected?, only: [:new, :create, :edit, :update]
+	
 	def index
-		if user_signed_in?
-			email = current_user.email
-			md5_email = Digest::MD5.hexdigest(email.downcase)
-			@gravatar_image = "http://www.gravatar.com/avatar/#{md5_email}"
-		end
+		@screencasts = Screencast.order('created_at DESC')
 	end
 
 	def new
@@ -24,10 +22,30 @@ class ScreencastsController < ApplicationController
 
 	def show
 		@screencast = Screencast.find params[:id]
+		@screencasts = Screencast.where(categorie_id: @screencast.categorie.id)
 	end
 
+	def edit
+		@screencast = Screencast.find params[:id]
+	end
+
+	def update
+		@screencast = Screencast.find params[:id]
+
+		if @screencast.update_attributes post_params
+			redirect_to @screencast
+		else
+			render 'edit'
+		end
+	end
 	private 
 		def post_params
-			params.require(:screencast).permit(:titre, :video)
+			params.require(:screencast).permit(:titre, :video, :image_principale, :categorie_id)
+		end
+
+		def user_connected?
+			unless user_signed_in?
+				redirect_to "/"
+			end
 		end
 end

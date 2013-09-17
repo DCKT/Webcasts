@@ -1,6 +1,15 @@
 .container.form
 	= simple_form_for @screencast do |s|
 		= s.input :titre
-		= s.file_field :video
+
+		%div
+			Image principale
+			= s.file_field :image_principale
+
+		%div
+			= s.file_field :video
+
+		%div
+			= s.association :categorie, label_method: :nom
 	 
 		= s.submit "Ajouter la vidéo"

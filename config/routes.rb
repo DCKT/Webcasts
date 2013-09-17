@@ -1,7 +1,11 @@
 WebCasts::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :screencasts
+  resources :categories
   root to: "screencasts#index"
+
+  post "nouveau-favori", to: 'favoris#new', as: 'new_fav'
+  get "mes-favoris", to: 'favoris#mes_favoris', as: 'mes_favoris'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
