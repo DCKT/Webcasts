@@ -1,6 +1,6 @@
 class ScreencastsController < ApplicationController
 	before_filter :user_connected?, only: [:new, :create, :edit, :update]
-	
+
 	def index
 		@screencasts = Screencast.order('created_at DESC')
 	end
@@ -11,6 +11,7 @@ class ScreencastsController < ApplicationController
 
 	def create
 		@screencast = Screencast.new post_params
+		@screencast.titre_slug = @screencast.titre.to_slug
 
 		if @screencast.save
 			redirect_to @screencast
@@ -22,7 +23,15 @@ class ScreencastsController < ApplicationController
 
 	def show
 		@screencast = Screencast.find params[:id]
-		@screencasts = Screencast.where(categorie_id: @screencast.categorie.id)
+		@isFav = false
+
+		if user_signed_in?
+			current_user.favoris.each do |f|
+				if f.screencast_id == @screencast.id
+					@isFav = true
+				end
+			end
+		end
 	end
 
 	def edit
@@ -38,9 +47,23 @@ class ScreencastsController < ApplicationController
 			render 'edit'
 		end
 	end
+
+	def search
+		if params[:query]
+			screencasts = Screencast.search_titre(params[:query])
+			images = []
+
+			screencasts.each do |screencast|
+				images << screencast.image_principale.url
+			end
+			respond_to do |format|
+				format.json { render json: [screencasts, images]}
+			end
+		end
+	end
 	private 
 		def post_params
-			params.require(:screencast).permit(:titre, :video, :image_principale, :categorie_id)
+			params.require(:screencast).permit(:titre, :description, :video, :image_principale, :categorie_id, :premium, :titre_slug)
 		end
 
 		def user_connected?

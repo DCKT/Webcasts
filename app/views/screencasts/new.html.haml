@@ -3,13 +3,19 @@
 		= s.input :titre
 
 		%div
-			Image principale
+			Image principale :
 			= s.file_field :image_principale
 
 		%div
+			Vidéo :
 			= s.file_field :video
 
 		%div
 			= s.association :categorie, label_method: :nom
 	 
+		%div
+			= s.input :description, as: :text
+
+		%div
+			= s.input :premium
 		= s.submit "Ajouter la vidéo"

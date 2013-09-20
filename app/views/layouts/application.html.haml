@@ -1,7 +1,15 @@
 !!!
 %html
 	%head
-		%title WebCasts
+		%title 
+			- if @screencast
+				= @screencast.titre 
+				\|
+			- elsif request.fullpath == "/mes-favoris"
+				Mes favoris -
+			- else
+				Accueil - 
+			WebCasts
 		= favicon_link_tag "webcasts.png"
 		= stylesheet_link_tag    "application", media: "all"
 		= javascript_include_tag "application"
@@ -9,11 +17,12 @@
 
 %body
 
+
 %nav
 	.pull-left
 		= link_to "WebCasts", root_path, class: "brand"
 		.search
-			%input
+			%input#search
 			= image_tag('search.png')
 	.pull-right
 		- if user_signed_in?
@@ -36,10 +45,11 @@
 					%li
 						= link_to "Déconnexion", destroy_user_session_path, method: :delete
 		- else
-			= link_to new_user_session_path , class: "login btn btn-warning" do
-				.user-icon
-					= image_tag('user.png')
-				Login
+			= link_to "Connexion", new_user_session_path , class: "registration btn btn-reverse"
+			= link_to "Inscription", new_user_registration_path, class: "registration btn btn-warning"
 
+.search-results
+	#clear
+		Fermer la fenêtre
 = yield
 

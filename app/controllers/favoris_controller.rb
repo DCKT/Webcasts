@@ -39,7 +39,7 @@ class FavorisController < ApplicationController
 	private
 		def user_connected?
 			unless user_signed_in?
-				redirect_to "/login"
+				redirect_to "/"
 			end
 		end
 end

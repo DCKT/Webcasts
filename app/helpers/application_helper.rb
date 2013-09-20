@@ -6,4 +6,11 @@ module ApplicationHelper
 			@gravatar_image = "http://www.gravatar.com/avatar/#{md5_email}"
 		end
 	end
+
+	def to_slug(string)
+		#strip the string
+		ret = string.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '').gsub('--', '')
+
+		ret
+	end
 end

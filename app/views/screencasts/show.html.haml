@@ -1,24 +1,62 @@
-// %aside.show
-// 	.content
-// 		- @screencasts.each do |screencast|
-// 			.box
-// 				= link_to screencast_path(screencast) do 
-// 					= image_tag(screencast.image_principale.url)
-// 					.titre= screencast.titre 
 .container.show
 	.content
-		%h1= @screencast.titre
+		%h1
+			= @screencast.titre
+			- if user_signed_in? and current_user.admin
+				= link_to "Editer", edit_screencast_path(@screencast.id), class: 'btn btn-primary edit'
 		%div
-			= video_tag(@screencast.video.url, controls: true)
+			- if @screencast.premium and user_signed_in? or @screencast.premium == false
+				= video_tag(@screencast.video.url, controls: true)
+			- else
+				Vidéo preview
 
+		%p
+			= @screencast.description
 		.actions
-			- if @screencast.favoris
-				%a.fav.active{href: '#'} 
-					= image_tag("star.png", data: {id: @screencast.id})
-			- else 
-				%a.fav{href: '#'}
-					= image_tag("star.png", data: {id: @screencast.id})
+			- if user_signed_in?
+				- if @isFav
+					%a.fav.active{href: '#'} 
+						= image_tag("star.png", data: {id: @screencast.id})
+				- else 
+					%a.fav{href: '#'}
+						= image_tag("star.png", data: {id: @screencast.id})
 			%a{href: '#'}
 				= image_tag("fb.png")
 			%a{href: '#'}
 				= image_tag("twitter.png")
+
+		.questions
+			%h2 
+				Questions & commentaires
+				%small 3 commentaires
+
+			.comment-box
+				- if get_gravatar_url()
+					.float-left
+						= image_tag(@gravatar_image)
+					.float-right
+						%textarea{placeHolder: "Insérez votre commentaire.."}
+						%div
+							%input.btn.btn-success{type:"submit"}
+
+
+				.reponses
+					.reponse
+						.float-left
+							%img{src: "http://placehold.it/80x80"}
+						.float-right
+							%h4 Mike Austin
+							%p
+								niam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+								commodo consequat. Duis aute irure dolor in reprehen
+								derit in voluptate velit esse cillum dolor
+
+					.reponse
+						.float-left
+							%img{src: "http://placehold.it/80x80"}
+						.float-right
+							%h4 Mike Austin
+							%p
+								niam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+								commodo consequat. Duis aute irure dolor in reprehen
+								derit in voluptate velit esse cillum dolor

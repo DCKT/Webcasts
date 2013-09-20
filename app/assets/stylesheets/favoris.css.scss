@@ -1,0 +1,34 @@
+@import "colors";
+@import "mixins";
+
+.favoris {
+	width: 75%;
+	margin: 50px auto;
+
+	h1 {
+		font-family: "Aleo-Bold";
+		font-size: 38px;
+		border-bottom: 3px solid $gray;
+		color: $black;
+	}
+
+	.box {
+		width: 30%;
+		border: 2px solid $gray;
+		img {
+			width: 100%;
+			display: block;
+		}
+
+		h3 {
+			text-align: center;
+			font-family: "Lato";
+			background-color: $gray;
+			color: white;
+			height: 50px;
+			margin: 0;
+			line-height: 50px;
+			text-decoration: none;
+		}
+	}
+}

@@ -1,10 +1,13 @@
-%h1.title 
-	Mes favoris
+.container.favoris
+	%h1.title 
+		Mes favoris
 
-- unless @screencasts.empty?
-	- @screencasts.each do |screencast|
-		.box
-			= screencast.titre
+	- unless @screencasts.empty?
+		- @screencasts.each do |screencast|
+			.box
+				= link_to screencast_path(screencast.id) do
+					= image_tag(screencast.image_principale.url)
+					%h3= screencast.titre
 
-- else 
-	Vous n'avez pas de favoris.
+	- else 
+		Vous n'avez pas de favoris.

@@ -10,5 +10,13 @@
 
 		%div
 			=s.association :categorie, label_method: :nom
+
+		%div
+			= s.input :description, as: :text
+
+		
+		%div
+			= s.input :premium
+
 		%div
 			= s.submit "Editer"

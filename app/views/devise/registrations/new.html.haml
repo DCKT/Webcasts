@@ -1,15 +1,32 @@
 .container.form.login
-	%h2 Inscription
+	.register-box
+		%h2 Inscription
 
-	= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-		= f.error_notification
+		= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+			= f.error_notification
 
-		= f.input :nom, required: true, autofocus: true
-		= f.input :prenom, required: true
-		= f.input :email, required: true
-		= f.input :password, required: true
-		= f.input :password_confirmation, required: true
+			.step.step1
+				%h3 1 - Informations basiques :
+				= f.input :nom, required: true, autofocus: true, label: "Nom :"
+				= f.input :prenom, required: true, label: "Prénom :"
+			.step.step2
+				%h3 2 - Identifiants du compte :
+				%div
+					= f.input :email, required: true
+				%div
+					= f.input :password, required: true, label: "Mot de passe"
+				= f.input :password_confirmation, required: true, label: "Confirmation mot de passe"
 
-		= f.button :submit, "S'inscrire", class: 'btn btn-warning'
+			.step.step3
+				%h3 3 - Informations de paiement
+				%label Numéro carte :
+				%input
+				%label Date d'expiration
+				%select
+					%option{value: "Septembre"} Septembre
+				%select
+					%option{value: "21"} 21
 
-	= render "devise/shared/links"
+			= f.button :submit, "Je m'inscris", class: 'btn btn-success'
+
+

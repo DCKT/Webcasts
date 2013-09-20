@@ -34,7 +34,40 @@ $ ->
 			data:
 				screencast_id: id
 			success: ->
-				alert('success')
+				$('a.fav').addClass('active')
 			error: ->
 				alert('error')
+
+	$('#clear').click (e) ->
+		e.preventDefault()
+		$('.search-results').slideUp("fast")
+		$('.result').remove()
+
+	$('#search').keypress (e) ->
+		if e.which == 13
+			query = $(@).val()
+
+			$.ajax
+				url: '/search'
+				type: "POST"
+				data:
+					query: query
+				success: (datas) ->
+					$('.result').remove()
+					results = []
+					for data in datas[0]
+						results.push 
+							titre: data.titre
+							id: data.id
+
+					for data, i in datas[1]
+						results[i].img_url = data
+
+					for result in results
+						titre = "<div class='titre'><h3>#{result.titre}</h3></div>"
+						img = "<img src='#{result.img_url}' />"
+						link = "<a href='/screencasts/#{result.id}'> #{titre}#{img}</a>"
+						html = "<div class='result'>#{link}</div>"
+						$('.search-results').append(html)
+					$('.search-results').slideDown()
 

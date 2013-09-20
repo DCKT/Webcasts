@@ -52,7 +52,7 @@ gem 'jbuilder', '~> 1.2'
 ################## 
 ## 	  SEARCH	##
 ################## 
-#gem 'pg_search'
+gem 'pg_search'
 
 ################## 
 ## 	   CRON		##

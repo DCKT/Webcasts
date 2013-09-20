@@ -5,6 +5,7 @@ WebCasts::Application.routes.draw do
   root to: "screencasts#index"
 
   post "nouveau-favori", to: 'favoris#new', as: 'new_fav'
+  post "search", to: 'screencasts#search'
   get "mes-favoris", to: 'favoris#mes_favoris', as: 'mes_favoris'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
