@@ -2,10 +2,32 @@
 @import "mixins";
 
 .form {
-	&.login {	
+	&.registration {
 		width: 75%;
-	
-		.register-box {
+	}
+	&.login {
+		width: 40%;
+		a {
+			color: white;
+		}
+		.field {
+			height: 55px;
+
+			label {
+				float: left;
+				width: 20%;
+				height: 30px;
+				text-align: right;
+				line-height: 35px;
+			}
+			input {
+				float: right;
+				margin-bottom: 15px;
+			}
+		}
+	}
+
+	.register-box {
 			background-color: $gray;
 			color: white;
 			text-align: center;
@@ -106,5 +128,4 @@
 			width: 60%;
 			float: right;
 		}
-	}
 }

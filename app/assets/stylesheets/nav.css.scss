@@ -100,7 +100,8 @@ nav {
 				li {
 					display: block;
 					text-align: center;
-					height: 30px;
+					height: 40px;
+					line-height: 35px;
 
 					&:not(:first-child) {
 						border-top: 2px solid gray;
@@ -144,8 +145,9 @@ nav {
 			}
 			img {
 				position: absolute;
-				left: -60px;
-				width: 50px;
+				left: -65px;
+				width: 55px;
+				height: 55px;
 				margin-right: 10px;
 				@include border-radius(120px);
 			}

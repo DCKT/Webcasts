@@ -1,6 +1,8 @@
 WebCasts::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
-  resources :screencasts
+  resources :screencasts do
+    resources :commentaires
+  end
   resources :categories
   root to: "screencasts#index"
 

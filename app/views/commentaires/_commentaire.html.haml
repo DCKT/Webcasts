@@ -1,0 +1,8 @@
+.reponse
+	.float-left
+		= image_tag(get_avatar_url(commentaire.user))
+	.float-right
+		%h4
+			= commentaire.user.prenom
+			= commentaire.user.nom
+		%p= commentaire.contenu

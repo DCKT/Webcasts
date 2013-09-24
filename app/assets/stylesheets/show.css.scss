@@ -69,13 +69,13 @@
 				padding: 6px;
 				line-height: 55px;
 
-				&:nth-child(1):hover {
+				&.fav:hover {
 					background-color: $green;
 				}
-				&:nth-child(2):hover {
+				&.facebook:hover {
 					background-color: #3B5998;
 				}
-				&:nth-child(3):hover {
+				&.twitter:hover {
 					background-color: #00BBF5;
 				}
 				&.active {
@@ -110,8 +110,11 @@
 			}
 
 			.comment-box {
+				position: relative;
 				img {
 					@include border-radius(120px);
+					width: 100px;
+					height: 100px;
 					margin: 17px;
 				}
 				textarea {
@@ -128,20 +131,39 @@
 					width: 20%;
 					margin-right: -7px;
 				}
-				h4 {
-					margin: 0;
-					font-family: "Lato";
+				.reponses {
+					position: relative;
+					top: 200px;
+					&.el {
+						top:0;
+					}
+				}
+				.comment-form {
+					position: absolute;
+					top: 0;
+					width: 100%;
 				}
 				.reponse {
+					clear: both;
+					margin-top: 25px;
+					min-height: 70px;
+
 					.float-left {
 						width: 10%;
 					}
 					.float-right {
 						width: 90%;
+						h4 {
+							margin: 0;
+							font-family: "Aleo";
+						}
+						p {
+							margin: 5px 0;
+						}
 
 					}
 					img {
-						margin-top: 55px;
+						margin-top: 7px;
 						width: 50px;
 						height: 50px;
 					}

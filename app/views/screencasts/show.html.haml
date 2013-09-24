@@ -20,43 +20,38 @@
 				- else 
 					%a.fav{href: '#'}
 						= image_tag("star.png", data: {id: @screencast.id})
-			%a{href: '#'}
+			%a.facebook{href: '#'}
 				= image_tag("fb.png")
-			%a{href: '#'}
+			%a.twitter{href: '#'}
 				= image_tag("twitter.png")
 
 		.questions
 			%h2 
 				Questions & commentaires
-				%small 3 commentaires
+				%small 
+					= @screencast.commentaires.length 
+					- if @screencast.commentaires.length > 1
+						commentaires
+					- else
+						commentaire
 
 			.comment-box
-				- if get_gravatar_url()
-					.float-left
-						= image_tag(@gravatar_image)
-					.float-right
-						%textarea{placeHolder: "Insérez votre commentaire.."}
-						%div
-							%input.btn.btn-success{type:"submit"}
-
-
-				.reponses
-					.reponse
+				- if user_signed_in?
+					.reponses
+						= render @screencast.commentaires
+				- else
+					.reponses.el
+						= render @screencast.commentaires
+				- if user_signed_in?
+					.comment-form	
 						.float-left
-							%img{src: "http://placehold.it/80x80"}
+							= image_tag(get_avatar_url(current_user))
 						.float-right
-							%h4 Mike Austin
-							%p
-								niam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-								commodo consequat. Duis aute irure dolor in reprehen
-								derit in voluptate velit esse cillum dolor
+							= simple_form_for [@screencast, @screencast.commentaires.build] do |c|
+								= c.input :contenu, as: :text
+								= c.input :user_id, as: :hidden, input_html: { value: current_user.id, data: { readonly: :readonly} }
+								= c.submit "Envoyer", class: 'btn btn-success'
 
-					.reponse
-						.float-left
-							%img{src: "http://placehold.it/80x80"}
-						.float-right
-							%h4 Mike Austin
-							%p
-								niam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-								commodo consequat. Duis aute irure dolor in reprehen
-								derit in voluptate velit esse cillum dolor
+
+						
+

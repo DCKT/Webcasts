@@ -30,16 +30,15 @@
 				= link_to "Nouveau screencast", new_screencast_path, class:'btn btn-warning admin'
 				= link_to "Nouvelle catégorie", new_category_path, class:'btn btn-warning admin-categ'
 			%a.connected{href: '#'}
-				- if get_gravatar_url()
-					= image_tag(@gravatar_image)
-				- else
-					%img{src: "http://placehold.it/80x80"}
+				= image_tag(get_avatar_url(current_user))
 				%span
 					= current_user.prenom.capitalize
 					= current_user.nom.capitalize
 
 			.panel.hide
 				%ul
+					%li
+						= link_to "Éditer mon profil", edit_user_registration_path(current_user)
 					%li
 						= link_to "Mes favoris", mes_favoris_path
 					%li

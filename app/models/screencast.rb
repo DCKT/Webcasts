@@ -5,6 +5,7 @@ class Screencast < ActiveRecord::Base
 
 	belongs_to :categorie
 	has_many :favoris
+	has_many :commentaires, dependent: :destroy
 	pg_search_scope :search_titre, :against => [:titre], :using => {
                     :tsearch => {:prefix => true}
                   }

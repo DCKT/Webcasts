@@ -5,5 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_attached_file :avatar
   has_many :favoris
+  has_many :commentaires
 end
