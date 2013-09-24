@@ -9,7 +9,7 @@ $ ->
 
 	$('body').on 'focus', '.search input', ->
 		$(@).animate
-			'width': '250px'
+			'width': '200px'
 			200
 
 	$('.search input').blur ->
@@ -42,6 +42,7 @@ $ ->
 		e.preventDefault()
 		$('.search-results').slideUp("fast")
 		$('.result').remove()
+		$('.search input').val('')
 
 	$('#search').keypress (e) ->
 		if e.which == 13

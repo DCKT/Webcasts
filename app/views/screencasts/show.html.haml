@@ -4,6 +4,9 @@
 			= @screencast.titre
 			- if user_signed_in? and current_user.admin
 				= link_to "Editer", edit_screencast_path(@screencast.id), class: 'btn btn-primary edit'
+			- if @screencast.premium and !user_signed_in?
+				.edit
+					= link_to image_tag('locker.png', alt: "Accès Premium", title: "Accès Premium"), new_user_registration_path, class: 'edit'
 		%div
 			- if @screencast.premium and user_signed_in? or @screencast.premium == false
 				= video_tag(@screencast.video.url, controls: true)

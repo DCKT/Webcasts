@@ -2,6 +2,12 @@
 @import "mixins";
 
 nav {
+	@media screen and (max-width: 600px) {
+		position: fixed;
+	}
+	@media screen and (min-width: 600px) and (max-width: 980px) {
+		position: fixed;
+	}
 	margin: 0;
 	padding: 0;
 	background-color: $black;
@@ -26,6 +32,9 @@ nav {
 	}
 
 	.search {
+		@media screen and (max-width: 720px) {
+			left: -215px;
+		}
 		float: right;
 		width: 200px;
 		position: relative;
@@ -175,7 +184,9 @@ nav {
 	display: none;
 
 	#clear {
-		
+		color: white;
+		font-family: "Lato";
+		cursor: pointer;
 	}
 	.result {
 		border: 1px solid $black;
