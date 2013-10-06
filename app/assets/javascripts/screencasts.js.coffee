@@ -28,13 +28,18 @@ $ ->
 		img = $(@).find('img')
 		id = $(img).data('id')
 
+		if $(@).data('fav')
+			url = "/delete-fav"
+		else
+			url = '/nouveau-favori'
+
 		$.ajax 
-			url: '/nouveau-favori'
+			url: url
 			type: "POST"
 			data:
 				screencast_id: id
 			success: ->
-				$('a.fav').addClass('active')
+				$('a.fav').toggleClass('active')
 			error: ->
 				alert('error')
 
@@ -43,6 +48,9 @@ $ ->
 		$('.search-results').slideUp("fast")
 		$('.result').remove()
 		$('.search input').val('')
+
+	$('.dismiss').click (e) ->
+		$('.flash').slideUp()
 
 	$('#search').keypress (e) ->
 		if e.which == 13
@@ -55,20 +63,13 @@ $ ->
 					query: query
 				success: (datas) ->
 					$('.result').remove()
-					results = []
-					for data in datas[0]
-						results.push 
-							titre: data.titre
-							id: data.id
-
-					for data, i in datas[1]
-						results[i].img_url = data
-
-					for result in results
-						titre = "<div class='titre'><h3>#{result.titre}</h3></div>"
-						img = "<img src='#{result.img_url}' />"
-						link = "<a href='/screencasts/#{result.id}'> #{titre}#{img}</a>"
+					
+					for data in datas.screencasts
+						titre = "<div class='titre'><h3>#{data.titre}</h3></div>"
+						img = "<img src='#{data.image_principale}' />"
+						link = "<a href='/screencasts/#{data.id}'> #{titre}#{img}</a>"
 						html = "<div class='result'>#{link}</div>"
 						$('.search-results').append(html)
 					$('.search-results').slideDown()
+
 

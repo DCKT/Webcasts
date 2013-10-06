@@ -2,7 +2,18 @@ class ScreencastsController < ApplicationController
 	before_filter :user_connected?, only: [:new, :create, :edit, :update]
 
 	def index
-		@screencasts = Screencast.order('created_at DESC')
+		if user_signed_in?
+			@screencasts = Screencast.order('created_at DESC').page(params[:page]).per(9)
+		else
+			@screencasts = Screencast.order('created_at DESC').page(params[:page]).per(5)
+		end
+
+		@categories = Categorie.all
+
+		respond_to do |format|
+      		format.html # index.html.erb
+      		format.js
+    	end
 	end
 
 	def new
@@ -51,16 +62,27 @@ class ScreencastsController < ApplicationController
 	def search
 		if params[:query]
 			screencasts = Screencast.search_titre(params[:query])
-			images = []
-
-			screencasts.each do |screencast|
-				images << screencast.image_principale.url
-			end
+			
 			respond_to do |format|
-				format.json { render json: [screencasts, images]}
+				format.json { render json: screencasts}
 			end
 		end
 	end
+
+	def get_last_videos
+		if params[:type] != "all"
+			categorie = params[:type]
+			@screencasts = Screencast.where(categorie_id: categorie)
+		else
+			@screencasts = Screencast.order('created_at DESC').page(params[:page]).per(9)	
+		end
+
+		respond_to do |format|
+			format.json { render json: @screencasts}
+		end
+	end
+
+
 	private 
 		def post_params
 			params.require(:screencast).permit(:titre, :description, :video, :image_principale, :categorie_id, :premium, :titre_slug)

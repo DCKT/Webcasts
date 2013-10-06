@@ -1,8 +1,21 @@
+@import "colors";
+@import "mixins";
+
 .container {
 	width: 75%;
-	margin-top: 60px;
+	margin-top: 20px;
 	
+	&.flash_message {
+		margin: auto;
+		margin-top: 25px;
+		text-align: center;
+		width: 50%;
+	}
+
 	&.form {
 		margin: 55px auto;
+		background-color: white;
+		border: 1px solid rgba($gray, 0.3);
+		@include border-radius(3px);
 	}
 }

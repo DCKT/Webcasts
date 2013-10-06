@@ -1,4 +1,4 @@
-.container.form
+.container.form.new_screencast
 	= simple_form_for @screencast do |s|
 		= s.input :titre
 
@@ -9,13 +9,13 @@
 		%div
 			Vidéo :
 			= s.file_field :video
-
-		%div
-			= s.association :categorie, label_method: :nom
 	 
 		%div
 			= s.input :description, as: :text
 
 		%div
+			= s.association :categorie, label_method: :nom
+		%div
 			= s.input :premium
-		= s.submit "Ajouter la vidéo"
+
+		= s.submit "Ajouter la vidéo", class: 'btn btn-success btn-block'

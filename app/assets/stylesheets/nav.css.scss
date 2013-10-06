@@ -16,9 +16,10 @@ nav {
 	width: 100%;
 	top: 0;
 	left: 0; 
-
+	z-index: 1000000;
+	
 	.brand {
-		float: left;
+		display: inline-block;
 		color: white;
 		line-height: 75px;
 		font-size: 50px;
@@ -26,9 +27,19 @@ nav {
 		text-decoration: none;
 		font-family: "ONRAMP";
 		
-		&:hover {
-			color: $orange;
-		}	
+		img {
+			width: 150px;
+			position: relative;
+			top: 15px;
+
+			&:hover {
+				content:url("test2.png");
+			}
+		}
+
+		// &:hover {
+		// 	color: $orange;
+		// }	
 	}
 
 	.search {
@@ -38,11 +49,11 @@ nav {
 		@media screen and (max-width: 720px) {
 			left: -215px;
 		}
-		float: right;
+		display: inline-block;
 		width: 200px;
 		position: relative;
-		top: 27px;
-		left: -175px;
+		top: -4px;
+		left: 25px;
 		input {
 			margin-top: -5px;
 			@include border-radius(33px);
@@ -99,7 +110,8 @@ nav {
 		.panel {
 			position: absolute;
 			top: 80px;
-			right: -10px;
+			z-index: 1000;
+			right: 0px;
 			width: 205px;
 			background-color: $gray;
 			height: 200px;
@@ -158,6 +170,7 @@ nav {
 			img {
 				position: absolute;
 				left: -65px;
+				top: -13px;
 				width: 55px;
 				height: 55px;
 				margin-right: 10px;

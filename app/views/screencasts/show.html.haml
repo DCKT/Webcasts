@@ -1,3 +1,4 @@
+= javascript_include_tag "show"
 .container.show
 	.content
 		%h1
@@ -8,17 +9,26 @@
 				.edit
 					= link_to image_tag('locker.png', alt: "Accès Premium", title: "Accès Premium"), new_user_registration_path, class: 'edit'
 		%div
-			- if @screencast.premium and user_signed_in? or @screencast.premium == false
-				= video_tag(@screencast.video.url, controls: true)
-			- else
-				Vidéo preview
+			// - if @screencast.premium and user_signed_in? or @screencast.premium == false
+			// 	= video_tag(@screencast.video.url, controls: true)
+
+			%script{type:"text/javascript", src:"//cdn.sublimevideo.net/js/16xqmz3m.js"}
+			%video#a240e92d.sublime{data: { image:"#{@screencast.image_principale.url(:large)}"}}
+				%source{src: "#{@screencast.video.url}"}
+				// %source{src: "https://cdn.sublimevideo.net/vpa/ms_720p.mp4", data: {quality: "hd"}}
+				// %source{src: "https://cdn.sublimevideo.net/vpa/ms_360p.webm"}
+				// %source{src: "https://cdn.sublimevideo.net/vpa/ms_720p.webm", data: {quality: "hd"}}
+
+						
+			// - else
+			// 	Vidéo preview
 
 		%p
 			= @screencast.description
 		.actions
 			- if user_signed_in?
 				- if @isFav
-					%a.fav.active{href: '#'} 
+					%a.fav.active{href: '#', data: {fav: true}} 
 						= image_tag("star.png", data: {id: @screencast.id})
 				- else 
 					%a.fav{href: '#'}
@@ -40,12 +50,6 @@
 
 			.comment-box
 				- if user_signed_in?
-					.reponses
-						= render @screencast.commentaires
-				- else
-					.reponses.el
-						= render @screencast.commentaires
-				- if user_signed_in?
 					.comment-form	
 						.float-left
 							= image_tag(get_avatar_url(current_user))
@@ -54,6 +58,13 @@
 								= c.input :contenu, as: :text
 								= c.input :user_id, as: :hidden, input_html: { value: current_user.id, data: { readonly: :readonly} }
 								= c.submit "Envoyer", class: 'btn btn-success'
+				- if user_signed_in?
+					.reponses
+						= render @screencast.commentaires
+				- else
+					.reponses.el
+						= render @screencast.commentaires
+				
 
 
 						

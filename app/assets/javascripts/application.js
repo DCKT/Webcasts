@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require categories
+//= require index
+//= require login
+//= require screencasts
+//= require commentaires
+
 

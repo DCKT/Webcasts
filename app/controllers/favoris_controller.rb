@@ -25,7 +25,7 @@ class FavorisController < ApplicationController
 	end
 
 	def delete
-		id = params[:id].to_i
+		id = params[:screencast_id].to_i
 		current_user.favoris.each do |f|
 			if f.screencast_id == id
 				@favori = Favori.find(f.id)

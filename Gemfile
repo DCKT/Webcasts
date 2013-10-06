@@ -47,7 +47,7 @@ gem 'jbuilder', '~> 1.2'
 ################## 
 ## 	PAGINATION	##
 ################## 
-#gem 'kaminari'
+gem 'kaminari'
 
 ################## 
 ## 	  SEARCH	##
@@ -59,7 +59,7 @@ gem 'pg_search'
 ################## 
 #gem 'whenever'
 
-
+gem "active_model_serializers"
 group :doc do
   gem 'sdoc', require: false
 end

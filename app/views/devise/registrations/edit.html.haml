@@ -1,30 +1,35 @@
-%h2 Editer mon profil
+.container.form.registration
+  .profil_edition
+    %h2 Editer mon profil
+    .edit_part
 
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-  = f.error_notification
+      = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+        = f.error_notification
 
-  %div
-    = f.input :email, :required => true, :autofocus => true
+        %div
+          = f.input :email, :required => true, :autofocus => true
 
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      %p Currently waiting confirmation for: = resource.unconfirmed_email
-    end
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            %p Currently waiting confirmation for: = resource.unconfirmed_email
+          end
 
-    = f.file_field :avatar
+          .input
+            = f.label :avatar
+            = f.file_field :avatar
 
-    = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
-    = f.input :password_confirmation, :required => false
-    = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
-
-
-  %div
-    = f.button :submit, "Update", class: 'btn btn-primary'
+          = f.input :password, :autocomplete => "off", :hint => "Laissez vide si vous ne voulez pas changer", :required => false
+          = f.input :password_confirmation, :required => false
+          = f.input :current_password, :hint => "Mot de passe requis pour valider vos changements", :required => true
 
 
-%h3 Cancel my account
+        %div
+          = f.button :submit, "Update", class: 'btn btn-primary btn-block'
 
-%p
-  Unhappy? 
-  = link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
+    .cancel_part
+      %h3 Suppression de compte
 
-= link_to "Back", :back
+      .cancel
+        = link_to "Supprimer mon compte", registration_path(resource_name), class: 'btn btn-danger', :data => { :confirm => "Are you sure?" }, :method => :delete
+
+      %h3.cancel_ab Stopper l'abonnement
+

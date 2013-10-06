@@ -20,7 +20,8 @@
 
 %nav
 	.pull-left
-		= link_to "WebCasts", root_path, class: "brand"
+		= link_to root_path, class: "brand" do 
+			= image_tag("test.png")
 		.search
 			%input#search
 			= image_tag('search.png')
@@ -44,11 +45,21 @@
 					%li
 						= link_to "Déconnexion", destroy_user_session_path, method: :delete
 		- else
-			= link_to "Connexion", new_user_session_path , class: "registration btn btn-reverse"
+			= link_to "Connexion", login_path , class: "registration btn btn-reverse"
 			= link_to "Inscription", new_user_registration_path, class: "registration btn btn-warning"
 
 .search-results
 	#clear
 		Fermer la fenêtre
+
+.container.flash_message
+	- if flash[:error] 
+		.flash.flash-error
+			= flash[:error]
+			.dismiss X
+	- elsif flash[:notice]
+		.flash.flash-notice
+			= flash[:notice]
+			.dismiss X
 = yield
 
