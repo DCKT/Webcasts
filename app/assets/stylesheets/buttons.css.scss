@@ -49,6 +49,12 @@ a, input, button {
 }
 .btn-warning {
 	background-color: #F16645;
+	border-bottom: 3px solid #DB5C3D;
+	box-shadow: 0px 3px 1px #DB5C3D;
+
+	&:hover, &:active, &:focus {
+		background-color: #DB5C3D;
+	}
 }
 .btn-reverse {
 	background-color: #313B3D;

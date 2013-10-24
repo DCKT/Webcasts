@@ -7,15 +7,15 @@ $ ->
 		event.preventDefault()
 		$('.panel').slideToggle('fast')
 
-	$('body').on 'focus', '.search input', ->
-		$(@).animate
-			'width': '200px'
-			200
+	# $('body').on 'focus', '.search input', ->
+	# 	$(@).animate
+	# 		'width': '200px'
+	# 		200
 
-	$('.search input').blur ->
-		$(@).animate
-			'width': '150px'
-			200		
+	# $('.search input').blur ->
+	# 	$(@).animate
+	# 		'width': '150px'
+	# 		200		
 
 	$('aside').css('height', $(document).height() - 80)
 

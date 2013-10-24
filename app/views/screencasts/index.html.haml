@@ -38,7 +38,7 @@
 				%li.active{data: { value: "all", titre:"Dernières vidéos" }} Dernières vidéos
 				- @categories.each do |c|
 					%li{data: { value: "#{c.id}", titre: "#{c.nom}"}}= c.nom
-				%li{data: {titre: "À venir"}} À venir
+				%li{data: {value: "soon", titre: "À venir"}} À venir
 		.content
 			%h1 Dernières vidéos
 			.box-list

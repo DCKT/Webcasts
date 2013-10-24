@@ -26,10 +26,10 @@
           = f.button :submit, "Update", class: 'btn btn-primary btn-block'
 
     .cancel_part
-      %h3 Suppression de compte
-
       .cancel
         = link_to "Supprimer mon compte", registration_path(resource_name), class: 'btn btn-danger', :data => { :confirm => "Are you sure?" }, :method => :delete
-
-      %h3.cancel_ab Stopper l'abonnement
+        
+        %br
+        %a.btn.btn-warning{:href => ""}
+          Annuler mon abonnement 
 

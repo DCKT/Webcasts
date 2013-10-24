@@ -31,6 +31,10 @@
 				margin-bottom: 15px;
 			}
 		}
+		.center {
+			margin: auto;
+			width: 40%;
+		}
 	}
 
 	&.new_screencast {
@@ -225,6 +229,10 @@
 						border: 2px solid rgba($gray, 0.3);
 						font-family: "Lato";
 						font-size: 17px;
+						background-repeat: no-repeat;
+						background-size: 15px;
+						background-position: 100px 5px;
+						background-image: url('select.png');
 					}
 				}
 				label {
@@ -254,7 +262,7 @@
 
 			input[type=submit] {
 				width: 90%;
-				margin-top: 50px;
+				margin-top: 35px;
 				font-size: 29px;
 			}
 

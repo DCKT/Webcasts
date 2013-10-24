@@ -22,12 +22,10 @@ body {
 	height: 100%;
 	background-color: #EEEFF0;
 }
-
-
-
 .hide {
 	display: none;
 }
+
 .pull-left {
 	width: 600px;
 	position: relative;

@@ -17,5 +17,5 @@
 //= require login
 //= require screencasts
 //= require commentaires
-
-
+//= require handlebars.runtime
+//= require_tree ./templates
