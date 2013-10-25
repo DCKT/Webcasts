@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
 	end
 
 	def show
-		@categorie = Categorie.where(name: params[:id])
+		@categorie = Categorie.where(nom: params[:id])[0]
 	end
 
 	private

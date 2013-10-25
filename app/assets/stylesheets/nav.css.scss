@@ -28,6 +28,11 @@ nav {
 		text-decoration: none;
 		font-family: "ONRAMP";
 
+		img {
+			width: 170px;
+			margin-top: 22px;
+		}
+
 		&:hover {
 			color: $orange;
 		}	
@@ -43,7 +48,7 @@ nav {
 		display: inline-block;
 		width: 200px;
 		position: relative;
-		top: -4px;
+		top: -11px;
 		left: 25px;
 
 		input {

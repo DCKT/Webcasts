@@ -20,7 +20,8 @@
 
 %nav
 	.pull-left
-		= link_to "WebCasts", root_path, class: "brand"
+		= link_to root_path, class: "brand" do
+			= image_tag "logo_tmp.png"
 		.search
 			%input#search
 			= image_tag('search.png')
@@ -63,7 +64,7 @@
 = yield
 
 
-- if request.url != "http://localhost:3000/"
+- if request.url != "http://localhost:3000/" or user_signed_in?
 	%footer
 		.company
 			%h3 Webcasts
@@ -75,10 +76,10 @@
 				à travers un large panel de vidéos.
 			.socials
 				%a{:href => "https://twitter.com/webcasts_"}=image_tag "other_twitter.png"
-				= image_tag "youtube.png"
+				%a{:href => ""}= image_tag "youtube.png"
 				%a{:href => "https://www.facebook.com/webcasts1"}= image_tag "other_FB.png"
-				= image_tag "gplus.png"
-				= image_tag "vimeo.png"
+				%a{:href => ""}= image_tag "gplus.png"
+				%a{:href => ""}= image_tag "vimeo.png"
 		.topics
 			= link_to categories_path do
 				%h3 Catégories
