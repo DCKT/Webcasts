@@ -62,3 +62,28 @@
 			.dismiss X
 = yield
 
+
+- if request.url != "http://localhost:3000/"
+	%footer
+		.company
+			%h3 Webcasts
+			%p
+				Découvrez ou approfondissez les
+				%br
+				bases du développement web
+				%br 
+				à travers un large panel de vidéos.
+			.socials
+				%a{:href => "https://twitter.com/webcasts_"}=image_tag "other_twitter.png"
+				= image_tag "youtube.png"
+				%a{:href => "https://www.facebook.com/webcasts1"}= image_tag "other_FB.png"
+				= image_tag "gplus.png"
+				= image_tag "vimeo.png"
+		.topics
+			= link_to categories_path do
+				%h3 Catégories
+			= link_to "HTML5", category_path("HTML5") 
+			= link_to "CSS3", category_path("CSS3") 
+			= link_to "JavaScript", category_path("JavaScript") 
+			= link_to "PHP", category_path("PHP")
+			= link_to "Outils", category_path("Outils")

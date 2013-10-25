@@ -25,6 +25,12 @@
 		margin: auto;
 		min-height: 500px;
 	
+		.video_container {
+			img {
+				width: 100px;
+				height: 100px;
+			}
+		}
 		.edit {
 			position: absolute;
 			right: 0px;

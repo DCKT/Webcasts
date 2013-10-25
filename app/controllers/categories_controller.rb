@@ -13,6 +13,13 @@ class CategoriesController < ApplicationController
 		end
 	end
 
+	def index
+		@categories = Categorie.all
+	end
+
+	def show
+		@categorie = Categorie.where(name: params[:id])
+	end
 
 	private
 		def post_params

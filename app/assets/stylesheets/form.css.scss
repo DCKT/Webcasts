@@ -273,10 +273,37 @@
 			}	
 		}
 		
-		.arguments {
-			width: 60%;
-			float: right;
+	.arguments {
+		width: 60%;
+		float: right;
+	}
+
+	&.register-infos {
+		background-color: $gray;
+		background-image: url("price.png");
+		background-repeat: no-repeat;
+		background-position: calc(100% - 10px) -10px;
+		background-size: contain;
+		color: white;
+		font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
+
+		h2 {
+			width: 70%;
+			margin-top: 15px;
+			margin-left: 15px;
+			border-bottom: 2px solid white;
 		}
+		li {
+			font-size: 18px;
+		}
+		.price {
+			font-size: 40px;
+			width: 150px;
+			height: 100px;
+			line-height: 100px;
+			padding: 10px;
+		}
+	}
 }
 
 #login-error {

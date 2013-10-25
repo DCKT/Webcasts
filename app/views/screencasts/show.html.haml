@@ -8,7 +8,7 @@
 			- if @screencast.premium and !user_signed_in?
 				.edit
 					= link_to image_tag('locker.png', alt: "Accès Premium", title: "Accès Premium"), new_user_registration_path, class: 'edit'
-		%div
+		%div.video_container
 			// - if @screencast.premium and user_signed_in? or @screencast.premium == false
 			// 	= video_tag(@screencast.video.url, controls: true)
 
