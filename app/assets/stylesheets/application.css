@@ -33,14 +33,18 @@ body {
 
 .flash {
 	position: relative;
-}
-
-.flash-notice {
-	background-color: #39aadc;
 	color: white;
 	padding: 5px;
 	font-family: "Lato";
 	font-size: 17px;
+	margin-bottom: 10px;
+}
+
+.flash-notice {
+	background-color: #39aadc;
+}
+.flash-error {
+	background-color: #e74c3c;
 }
 
 .dismiss {

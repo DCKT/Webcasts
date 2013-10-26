@@ -1,5 +1,5 @@
 class ScreencastsController < ApplicationController
-	before_filter :user_connected?, only: [:new, :create, :edit, :update]
+	before_filter :user_connected?, only: [:new, :create, :edit, :update, :destroy]
 
 	def index
 		if user_signed_in?
@@ -22,10 +22,10 @@ class ScreencastsController < ApplicationController
 
 	def create
 		@screencast = Screencast.new post_params
-		@screencast.titre_slug = @screencast.titre.to_slug
+		@screencast.slug = @screencast.titre.gsub(" - ", "-").gsub(".", "-").gsub("--","-").gsub(" ", "-")
 
 		if @screencast.save
-			redirect_to @screencast
+			redirect_to screencast_path(@screencast.slug)
 
 		else
 			render "new"
@@ -33,7 +33,8 @@ class ScreencastsController < ApplicationController
 	end
 
 	def show
-		@screencast = Screencast.find params[:id]
+		@screencast = Screencast.where(slug: params[:id])[0]
+
 		@isFav = false
 
 		if user_signed_in?
@@ -51,9 +52,10 @@ class ScreencastsController < ApplicationController
 
 	def update
 		@screencast = Screencast.find params[:id]
+		@screencast.slug = post_params["titre"].gsub(" - ", "-").gsub(".", "-").gsub("--","-").gsub(" ", "-")
 
 		if @screencast.update_attributes post_params
-			redirect_to @screencast
+			redirect_to screencast_path(@screencast.slug)
 		else
 			render 'edit'
 		end
@@ -83,9 +85,18 @@ class ScreencastsController < ApplicationController
 	end
 
 
+	def destroy
+		if current_user.admin
+			@screencast = Screencast.find(params[:id])
+			@screencast.destroy
+			flash[:notice] = "Screencast supprimé !"
+			redirect_to root_path
+		end
+	end
+
 	private 
 		def post_params
-			params.require(:screencast).permit(:titre, :description, :video, :image_principale, :categorie_id, :premium, :titre_slug)
+			params.require(:screencast).permit(:titre, :description, :video, :image_principale, :categorie_id, :premium, :slug)
 		end
 
 		def user_connected?

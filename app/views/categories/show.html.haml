@@ -1,2 +1,10 @@
 .container.categories
 	%h1= @categorie.nom
+
+	.screencasts-list
+		- @screencasts.each do |s|
+			.screencast-item
+				= link_to screencast_path(s.slug) do 
+					.image_principale
+						= image_tag(s.image_principale.url)
+					%h4= s.titre

@@ -1,11 +1,14 @@
-.container.form
+.container.form.new_screencast
 	= simple_form_for @screencast do |s|
 		= s.input :titre
 
 		%div
-			Image principale
+			= s.label :file_field, "Image principale"
 			= s.file_field :image_principale
+
+
 		%div
+			= s.label :video, "Video :"
 			= s.file_field :video
 
 		%div

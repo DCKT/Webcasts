@@ -19,6 +19,7 @@ class CategoriesController < ApplicationController
 
 	def show
 		@categorie = Categorie.where(nom: params[:id])[0]
+		@screencasts = Screencast.where(categorie_id: @categorie.id)
 	end
 
 	private
