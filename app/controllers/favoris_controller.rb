@@ -31,7 +31,7 @@ class FavorisController < ApplicationController
 				@favori = Favori.find(f.id)
 				@favori.destroy
 				flash[:notice] = "Votre favori a bien été supprimé !"
-				redirect_to "/"
+				redirect_to :back
 			end
 		end
 	end

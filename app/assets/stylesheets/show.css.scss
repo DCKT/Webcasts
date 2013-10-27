@@ -58,9 +58,6 @@
 			position: relative;
 		}
 
-		video {
-			// width: 100%;
-		}
 
 		p {
 			font-family: "Lato";
@@ -119,6 +116,34 @@
 					position: absolute;
 					top: 13px;
 					left: 14px;
+				}
+
+				.tooltip {
+					display: none;
+					position: absolute;
+					width: 130px;
+					background-color: rgba($gray, 0.9);
+					color: white;
+					font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
+					height: 35px;
+					line-height: 35px;
+					margin-top: 57px;
+					margin-left: -42px;
+					@include border-radius(3px);
+
+					&:before {
+						display: block;
+						color: transparent;
+						content:"'";
+						width: 0;
+						height: 0;
+						position: absolute;
+						margin-left: 50px;
+						margin-top: -11px;
+						border-left: 11px solid transparent;
+						border-right: 11px solid transparent;
+						border-bottom: 11px solid rgba($gray, 0.9);
+					}
 				}
 			}
 		}

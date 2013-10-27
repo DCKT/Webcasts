@@ -5,7 +5,7 @@
 	- unless @screencasts.empty?
 		- @screencasts.each do |screencast|
 			.box
-				= link_to screencast_path(screencast.id) do
+				= link_to screencast_path(screencast.slug) do
 					= image_tag(screencast.image_principale.url)
 					%h3= screencast.titre
 

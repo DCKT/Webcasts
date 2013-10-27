@@ -7,41 +7,13 @@ $ ->
 		event.preventDefault()
 		$('.panel').slideToggle('fast')
 
-	# $('body').on 'focus', '.search input', ->
-	# 	$(@).animate
-	# 		'width': '200px'
-	# 		200
-
-	# $('.search input').blur ->
-	# 	$(@).animate
-	# 		'width': '150px'
-	# 		200		
-
 	$('aside').css('height', $(document).height() - 80)
 
 	window.onresize = ->
 		$('aside').css('height', window.innerHeight - 80)
 
 
-	$('a.fav').click (event) ->
-		event.preventDefault()
-		img = $(@).find('img')
-		id = $(img).data('id')
 
-		if $(@).data('fav')
-			url = "/delete-fav"
-		else
-			url = '/nouveau-favori'
-
-		$.ajax 
-			url: url
-			type: "POST"
-			data:
-				screencast_id: id
-			success: ->
-				$('a.fav').toggleClass('active')
-			error: ->
-				alert('error')
 
 	$('#clear').click (e) ->
 		e.preventDefault()
