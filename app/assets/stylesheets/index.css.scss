@@ -118,15 +118,14 @@
 				border: 1px solid rgba($gray, 0.3);
 				position: relative;
 
-				&.new {
-					img {
-						background-image: url("new.png");
-						background-repeat: no-repeat;
-						// width: 120px;
-						// height: 70px;
-						// right: 0px;
-						// position: absolute;
-					}
+				.new {
+					background-image: url("new.png");
+					background-repeat: no-repeat;
+					width: 120px;
+					height: 70px;
+					right: 0px;
+					position: absolute;
+
 				}
 				a {
 					text-decoration: none;

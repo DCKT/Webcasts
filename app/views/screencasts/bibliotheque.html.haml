@@ -9,8 +9,9 @@
 		%h1 Dernières vidéos
 		.box-list
 			- @screencasts.each do |screencast|
-				.box{class: is_new?(screencast) ? "new" : ""}
-					
+				.box
+					- if is_new?(screencast)
+						.new
 					= link_to screencast_path(screencast.slug) do 
 						= image_tag(screencast.image_principale.url, alt: screencast.titre, title: screencast.titre)
 						.titre= screencast.titre 
