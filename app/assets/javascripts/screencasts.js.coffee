@@ -39,7 +39,7 @@ $ ->
 					for data in datas.screencasts
 						titre = "<div class='titre'><h3>#{data.titre}</h3></div>"
 						img = "<img src='#{data.image_principale}' />"
-						link = "<a href='/screencasts/#{data.id}'> #{titre}#{img}</a>"
+						link = "<a href='/screencasts/#{data.slug}'> #{titre}#{img}</a>"
 						html = "<div class='result'>#{link}</div>"
 						$('.search-results').append(html)
 					$('.search-results').slideDown()

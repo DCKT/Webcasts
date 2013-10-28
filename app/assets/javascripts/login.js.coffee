@@ -11,7 +11,7 @@ $ ->
 					password: $('#user_password').val()
 					remember_me: $('#user_remember_me').val()
 			success: ->
-				window.location = "/"
+				window.location = "/bibliotheque"
 			error: ->
 				$('#login-error').slideDown()
 				$('#user_password').val('')

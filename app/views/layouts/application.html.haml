@@ -22,10 +22,12 @@
 	.pull-left
 		= link_to root_path, class: "brand" do
 			= image_tag "logo_tmp.png"
+		.nav-list
+			= link_to "Bibliothèque", bibliotheque_path
+	.pull-right
 		.search
 			%input#search
 			= image_tag('search.png')
-	.pull-right
 		- if user_signed_in?
 			- if current_user.admin
 				= link_to "Nouveau screencast", new_screencast_path, class:'btn btn-warning admin'

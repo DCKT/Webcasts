@@ -19,6 +19,23 @@ nav {
 	left: 0; 
 	z-index: 1000000;
 	
+	.nav-list {
+		display: inline-block;
+		margin-left: 40px;
+		position: relative;
+		top: -10px;
+
+		a {
+			color: gray;
+			font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
+			font-weight: bold;
+			text-decoration: none;
+
+			&:hover {
+				color: white;
+			}
+		}
+	}
 	.brand {
 		display: inline-block;
 		color: white;
@@ -48,8 +65,8 @@ nav {
 		display: inline-block;
 		width: 200px;
 		position: relative;
-		top: -11px;
-		left: 25px;
+		top: 18px;
+		left: -75px;
 
 		input {
 			margin-top: -5px;
@@ -102,6 +119,8 @@ nav {
 			display: inline-block;
 			width: 110px;
 			line-height: 20px;
+			top: 18px;
+			right: 10px;
 		}
 
 		.panel {
@@ -146,11 +165,17 @@ nav {
 		}
 		
 		.admin {
+			@media screen and (max-width: 970px) {
+				display: none;
+			}
 			position: absolute;
 			left: -300px;
 			top: 21px;
 		}
 		.admin-categ {
+			@media screen and (max-width: 970px) {
+				display: none;
+			}
 			position: absolute;
 			left: -500px;
 			top: 21px;

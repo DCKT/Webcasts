@@ -15,4 +15,12 @@ module ApplicationHelper
 
 		ret
 	end
+
+	def is_new?(screencast)
+		if Time.now > screencast.created_at + 7.days
+			return false
+		else
+			return true
+		end
+	end
 end

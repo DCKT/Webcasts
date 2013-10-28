@@ -3,15 +3,22 @@ class ScreencastsController < ApplicationController
 
 	def index
 		if user_signed_in?
-			@screencasts = Screencast.order('created_at DESC').page(params[:page]).per(9)
+			redirect_to "/bibliotheque"
 		else
 			@screencasts = Screencast.order('created_at DESC').page(params[:page]).per(5)
-		end
 
+			respond_to do |format|
+	      		format.html # index.html.erb
+	    	end
+	    end
+	end
+
+	def bibliotheque
+		@screencasts = Screencast.order('created_at DESC').page(params[:page]).per(9)
 		@categories = Categorie.all
 
 		respond_to do |format|
-      		format.html # index.html.erb
+      		format.html
       		format.js
     	end
 	end

@@ -1,0 +1,16 @@
+.container.index-connected
+	.menu
+		%ul.menu-list
+			%li.active{data: { value: "all", titre:"Dernières vidéos" }} Dernières vidéos
+			- @categories.each do |c|
+				%li{data: { value: "#{c.id}", titre: "#{c.nom}"}}= c.nom
+			%li{data: {value: "soon", titre: "À venir"}} À venir
+	.content
+		%h1 Dernières vidéos
+		.box-list
+			- @screencasts.each do |screencast|
+				.box{class: is_new?(screencast) ? "new" : ""}
+					
+					= link_to screencast_path(screencast.slug) do 
+						= image_tag(screencast.image_principale.url, alt: screencast.titre, title: screencast.titre)
+						.titre= screencast.titre 
