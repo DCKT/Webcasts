@@ -20,7 +20,7 @@ $ ->
 						id = data.id
 						titre = "<div class='titre'>#{data.titre}</div>"
 						image = "<img src='#{data.image_principale}' alt='#{data.titre}' title='#{data.titre}' />"
-						div = "<div class='box'><a href='/screencasts/#{id}'>#{image}#{titre}</a></div>"
+						div = "<div class='box'><a href='/screencasts/#{data.slug}'>#{image}#{titre}</a></div>"
 						$('.box-list').append(div)
 				error: ->
 					$('.flash').remove()

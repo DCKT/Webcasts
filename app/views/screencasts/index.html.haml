@@ -1,49 +1,31 @@
-- unless user_signed_in?
-	%aside.nano
-		.content
-			- @screencasts.each do |screencast|
-				.box
-					= link_to screencast_path(screencast.slug) do 
-						= image_tag(screencast.image_principale.url, alt: screencast.titre, title: screencast.titre)
-						.titre= screencast.titre 
+%aside.nano
+	.content
+		- @screencasts.each do |screencast|
+			.box
+				= link_to screencast_path(screencast.slug) do 
+					= image_tag(screencast.image_principale.url, alt: screencast.titre, title: screencast.titre)
+					.titre= screencast.titre 
 
-	.container.index
-		.word
-			= image_tag('tv.png', alt: "Bibliothèque de screencast")
-			%h2 Regardez
-			%p 
-				Parcourez la bibliothèque et regardez les screencasts de votre choix en illimités parmis 
-				les nombreuses catégories (HTML, CSS, JavaScript, PHP, Ruby, etc).
-		.word
-			= image_tag('book.png', alt: "Apprenez à votre rythme")
-			%h2 Apprenez
-			%p
-				L'auto-apprentissage est un élément essentiel pour un bon développeur, 
-				chaques screencasts misent sur l'essentiels permettant la compréhension 
-				du public.
-		.word
-			= image_tag('tools.png', alt: "Outils à votre disposition")
-			%h2 Créez
-			%p 
-				Une fois le screencast terminé, vous avez tous les outils en main pour
-				réaliser de grandes choses. Anecdotes et conseils vous permettant 
-				de démarrer sur de bonnes bases.
+.container.index
+	.word
+		= image_tag('tv.png', alt: "Bibliothèque de screencast")
+		%h2 Regardez
+		%p 
+			Parcourez la bibliothèque et regardez les screencasts de votre choix en illimités parmis 
+			les nombreuses catégories (HTML, CSS, JavaScript, PHP, Ruby, etc).
+	.word
+		= image_tag('book.png', alt: "Apprenez à votre rythme")
+		%h2 Apprenez
+		%p
+			L'auto-apprentissage est un élément essentiel pour un bon développeur, 
+			chaques screencasts misent sur l'essentiels permettant la compréhension 
+			du public.
+	.word
+		= image_tag('tools.png', alt: "Outils à votre disposition")
+		%h2 Créez
+		%p 
+			Une fois le screencast terminé, vous avez tous les outils en main pour
+			réaliser de grandes choses. Anecdotes et conseils vous permettant 
+			de démarrer sur de bonnes bases.
 
-		= link_to "Commencer dès maintenant", new_user_registration_path, class: 'btn btn-success register'
-			
-- else 
-	.container.index-connected
-		.menu
-			%ul.menu-list
-				%li.active{data: { value: "all", titre:"Dernières vidéos" }} Dernières vidéos
-				- @categories.each do |c|
-					%li{data: { value: "#{c.id}", titre: "#{c.nom}"}}= c.nom
-				%li{data: {value: "soon", titre: "À venir"}} À venir
-		.content
-			%h1 Dernières vidéos
-			.box-list
-				- @screencasts.each do |screencast|
-					.box
-						= link_to screencast_path(screencast.slug) do 
-							= image_tag(screencast.image_principale.url, alt: screencast.titre, title: screencast.titre)
-							.titre= screencast.titre 
+	= link_to "Commencer dès maintenant", new_user_registration_path, class: 'btn btn-success register'

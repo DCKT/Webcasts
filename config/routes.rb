@@ -16,6 +16,7 @@ WebCasts::Application.routes.draw do
 
   post "search", to: 'screencasts#search'
   get "mes-favoris", to: 'favoris#mes_favoris', as: 'mes_favoris'
-
   post "screencasts-videos", to: 'screencasts#get_last_videos'
+
+  get "bibliotheque", to: 'screencasts#bibliotheque', as: "bibliotheque"
 end

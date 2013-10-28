@@ -1,6 +1,11 @@
 = javascript_include_tag "show"
 = javascript_include_tag "disqus"
 
+%meta{property:"og:title",content:"#{@screencast.titre}"}
+%meta{property:"og:type",content:"Site"}
+%meta{property:"og:url",content:"https://webcasts.fr/screencasts/#{@screencast.slug}"}
+%meta{property:"og:image",content:"#{@screencast.image_principale.url}"}
+
 .container.show
 	.content
 		%h1
@@ -28,7 +33,9 @@
 
 		%p
 			= @screencast.description
-		.actions
+
+
+		%div{class: user_signed_in? ? "actions" : "actions simple_share"}
 			- if user_signed_in?
 				- if @isFav
 					%a.fav.active{href: '#', data: {fav: "true"}} 
@@ -38,44 +45,23 @@
 					%a.fav{href: '#'}
 						= image_tag("star.png", data: {id: @screencast.id})
 						.tooltip
-			%a.facebook{href: '#'}
-				= image_tag("fb.png")
-			%a.twitter{href: '#'}
+
+			- unless user_signed_in?		
+				%a.facebook.first-share{href: "https://www.facebook.com/sharer/sharer.php?u=https://webcasts.fr/screencasts/#{@screencast.slug}", target: "_blank"}
+					= image_tag("fb.png")
+			- else 
+				%a.facebook{href: "https://www.facebook.com/sharer/sharer.php?u=https://webcasts.fr/screencasts/#{@screencast.slug}", target: "_blank"}
+					= image_tag("fb.png")
+			%a.twitter{href: "https://twitter.com/share?text=#{@screencast.titre}&via=webcasts_&url=https://webcasts.fr/screencasts/#{@screencast.slug}",target: "_blank", data:{lang: "fr", via: "webcasts_"}}
 				= image_tag("twitter.png")
 
 
-		- if user_signed_in?
+		- if user_signed_in? or !@screencast.premium
 			#disqus_thread{style: "margin-top: 25px"}
 
 		%noscript 
 			Please enable JavaScript
     
-		/ .questions
-		/ 	%h2 
-		/ 		Questions & commentaires
-		/ 		%small 
-		/ 			= @screencast.commentaires.length 
-		/ 			- if @screencast.commentaires.length > 1
-		/ 				commentaires
-		/ 			- else
-		/ 				commentaire
-
-		/ 	.comment-box
-		/ 		- if user_signed_in?
-		/ 			.comment-form	
-		/ 				.float-left
-		/ 					= image_tag(get_avatar_url(current_user))
-		/ 				.float-right
-		/ 					= simple_form_for [@screencast, @screencast.commentaires.build] do |c|
-		/ 						= c.input :contenu, as: :text
-		/ 						= c.input :user_id, as: :hidden, input_html: { value: current_user.id, data: { readonly: :readonly} }
-		/ 						= c.submit "Envoyer", class: 'btn btn-success'
-		/ 		- if user_signed_in?
-		/ 			.reponses
-		/ 				= render @screencast.commentaires
-		/ 		- else
-		/ 			.reponses.el
-		/ 				= render @screencast.commentaires
 				
 
 
